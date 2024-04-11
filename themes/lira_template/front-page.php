@@ -2,27 +2,42 @@
 
 <main class="main-container">
 
+  <?php
+
+  // Check value exists.
+  if (have_rows('full_width_image')) :
+
+    // Loop through rows.
+    while (have_rows('full_width_image')) : the_row();
+
+      // Case: Paragraph layout.
+      if (get_row_layout() == 'image') :
+        $text = get_sub_field('image');
+
+      endif;
+
+    // End loop.
+    endwhile;
+  endif;
+  ?>
+
   <?php if (have_rows('flexible_content')) : ?>
     <?php while (have_rows('flexible_content')) : the_row(); ?>
 
       <?php if (get_row_layout() == 'full_width_image') : ?>
-        <?php get_template_part("image") ?>
-      <?php elseif (get_row_layout() == 'about') : ?>
-        <?php get_template_part("template-parts/about-section") ?>
-      <?php elseif (get_row_layout() == 'contacts') : ?>
-        <?php get_template_part("template-parts/contacts-section") ?>
+        <?php get_template_part("floors/full_width_image") ?>
       <?php endif; ?>
-      <div class="full-image" style="margin-top: <?php echo esc_html(get_field('color')); ?>px; margin-bottom: 20px;">
-        <div class="centered-container d-flex  justify-content-center">
-          <a class="w-100" href="/go/">
-            <img style="object-fit: cover; width: 100%;" src="https://yyy-egyptcasino.com/wp-content/uploads/2024/04/yyy-egyptcasino32.webp" alt="yyy-egyptcasino32">
-          </a>
-        </div>
-      </div>
+
     <?php endwhile; ?>
   <?php endif; ?>
 
-
+  <!-- <div class="full-image" style="margin-top: <?php echo esc_html(get_field('color')); ?>px; margin-bottom: 20px;">
+    <div class="centered-container d-flex  justify-content-center">
+      <a class="w-100" href="/go/">
+        <img style="object-fit: cover; width: 100%;" src="https://yyy-egyptcasino.com/wp-content/uploads/2024/04/yyy-egyptcasino32.webp" alt="yyy-egyptcasino32">
+      </a>
+    </div>
+  </div> -->
 
   <div class="default-title-and-content" data-index="2" style="padding-top: 50px; padding-bottom: 50px;;">
     <div class="centered-container" style="color: #fff">

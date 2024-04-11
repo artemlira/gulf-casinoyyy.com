@@ -119,13 +119,13 @@ function  my_acf_blocks_init()
 {
   if (function_exists('acf_register_block_type')) {
     acf_register_block_type(array(
-      'name'              => 'about',
-      'title'             => 'About',
-      'description'       => 'Custom block about page',
+      'name'              => 'full-width-image',
+      'title'             => 'full-width-image',
+      'description'       => 'Custom block full-width-image page',
       'render_callback'   => 'render_acf_gutenberg_block',
       'category'          => 'custom-categories',
       'icon'              => 'admin-comments',
-      'enqueue_style'     => get_template_directory_uri()  . '/dist/css/blocks.min.css',
+      'enqueue_style'     => get_template_directory_uri()  . '/floors/full-width-image/full-width-image.css',
     ));
   }
 }
