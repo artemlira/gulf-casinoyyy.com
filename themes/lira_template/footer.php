@@ -7,7 +7,7 @@
       <div class="footer__wrapper">
         <div class="col-md-3 left-side-foot">
           <a href="/">
-            <img src="https://yyy-egyptcasino.com/wp-content/uploads/2024/02/Logo.svg" alt="Logo" />
+            <img src="<?php the_field('logotype_footer'); ?>" alt="Logo" />
           </a>
         </div>
         <div class="col-md-6 center-side-foot">
@@ -18,24 +18,27 @@
         <!--                </div>-->
       </div>
       <div class="short-descr-foot">
-        <p>من خلال زيارة موقع YYY Casino ، فإنك توافق على شروط الخدمة وسياسة الخصوصية. إذا كنت تحت سن الرشد أو إذا كانت قوانين بلدك تحظر المقامرة في الكازينو ، فلن تتمكن من بدء اللعب ، ولكن يمكنك قراءة أي معلومات على موقعنا.
-        </p>
+        <p><?php the_field('footer_short_description'); ?></p>
       </div>
-      <div class="foot-copyright-block">
-        <div class="foot-copyright-block__right">
-          <p>© 2024 YYY Casino, All Rights Reserved</p>
-        </div>
-        <div class="foot-copyright-block__left">
-          <p>سنوات وأكثر فقط</p>
-          <img src="https://yyy-egyptcasino.com/wp-content/uploads/2024/02/uil_18-plus.svg" alt="">
-        </div>
-      </div>
+      <?php if (have_rows('footer_copyright')) : ?>
+        <?php while (have_rows('footer_copyright')) : the_row(); ?>
+          <div class="foot-copyright-block">
+            <div class="foot-copyright-block__right">
+              <p><?php the_sub_field('right_copyright'); ?></p>
+            </div>
+            <div class="foot-copyright-block__left">
+              <p><?php the_sub_field('left_text'); ?></p>
+              <img src="<?php the_sub_field('left_image'); ?>" alt="">
+            </div>
+          </div>
+        <?php endwhile; ?>
+      <?php endif; ?>
     </div>
   </div>
 </footer>
 
 <div id="stop" class="scrollTop">
-  <img src="https://yyy-egyptcasino.com/wp-content/themes/sb_template/images/up-arrow.png" alt="top">
+  <img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/img/up-arrow.png" alt="top">
 </div>
 <?php wp_footer(); ?>
 </body>
